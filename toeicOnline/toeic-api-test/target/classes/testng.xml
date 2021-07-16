@@ -3,6 +3,8 @@
     <test name="case1">
         <classes>
             <class name="vn.myclass.api.test.RoleTest"/>
+            <class name="vn.myclass.api.test.LoginTest"/>
+            <class name="vn.myclass.api.test.ListenGuidelineTest"/>
         </classes>
     </test>
 </suite>

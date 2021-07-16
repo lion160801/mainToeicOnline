@@ -24,7 +24,7 @@ public class ListenGuidelineController extends HttpServlet {
           ListenGuidelineCommand command = new ListenGuidelineCommand();
        command.setMaxPageItems(2);
         RequestUtil.initSearchBean(request,command);
-        Object[] objects = guidelineService.findListenGuidelineByProperties(null,null,command.getSortExpression(),
+        Object[] objects = guidelineService.findListenGuidelineByProperties(null,command.getSortExpression(),
                 command.getSortDirection(),command.getFirstItem(),command.getMaxPageItems());
         command.setListResult((List<ListenGuidelineDTO>) objects[1]);
         command.setTotalItems(Integer.parseInt(objects[0].toString()));
