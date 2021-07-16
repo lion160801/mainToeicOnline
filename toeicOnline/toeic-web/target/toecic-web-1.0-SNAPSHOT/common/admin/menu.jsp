@@ -2,7 +2,7 @@
          pageEncoding="UTF-8"%>
 <%@include file="/common/taglib.jsp"%>
 <c:url value="/admin-guideline-listen-list.html" var="listenGuidelineListUrl">
-<%--    <c:param name="urlType" value="url_list"/>--%>
+    <c:param name="urlType" value="url_list"/>
 <%--&lt;%&ndash;</c:url>&ndash;%&gt;--%>
 <%--<c:url value="/admin-user-list.html" var="userListUrl">--%>
 <%--    <c:param name="urlType" value="url_list"/>--%>

@@ -16,6 +16,16 @@ public class AbstractCommand<T> {
     private String messageResponse;
     private int page = 1;
 
+    public String getUrlType() {
+        return urlType;
+    }
+
+    public void setUrlType(String urlType) {
+        this.urlType = urlType;
+    }
+
+    private String urlType;
+
     public T getPojo() {
         return pojo;
     }
