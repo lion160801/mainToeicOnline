@@ -174,11 +174,11 @@
 <%--        hideAllWhenClickButton();--%>
 <%--    });--%>
 
-<%--    function hideAllWhenClickButton() {--%>
-<%--        $(button).click(function () {--%>
-<%--            $(p).hide();--%>
-<%--        })--%>
-<%--    }--%>
-<%--</script>--%>
+    function hideAllWhenClickButton() {
+        $(button).click(function () {
+            $(p).hide();
+        })
+    }
+</script>
 </body>
 </html>
