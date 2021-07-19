@@ -101,14 +101,14 @@
                     <div class="form-group">
                         <label class="col-sm-3 control-label no-padding-right"></label>
                         <div class="col-sm-9">
-                            <button>Click me</button>
+                            <button id="btnHide">Click me</button>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-3 control-label no-padding-right"></label>
                         <div class="col-sm-9">
                             <p>This is 1stP</p>
-                            <p>This is 2stP</p>
+                            <p class="hideText">This is 2stP</p>
                             <h2>This is h2</h2>
                         </div>
                     </div>
@@ -117,66 +117,14 @@
         </div>
     </div>
 </div>
-<%--<script>--%>
-<%--    var listenGuidelineId = '';--%>
-<%--    <c:if test="${not empty item.pojo.listenGuidelineId}">--%>
-<%--    listenGuidelineId = ${item.pojo.listenGuidelineId};--%>
-<%--    </c:if>--%>
-<%--    $(document).ready(function () {--%>
-<%--        var editor = CKEDITOR.replace( 'ListenGuidelineContent' );--%>
-<%--        CKFinder.setupCKEditor( editor, '/ckfinder/' );--%>
-<%--        validateData();--%>
-<%--        $('#uploadImage').change(function () {--%>
-<%--            readURL(this, "viewImage");--%>
-<%--        });--%>
-<%--    });--%>
-<%--    function validateData() {--%>
-<%--        $('#formEdit').validate({--%>
-<%--            ignore: [],--%>
-<%--            rules: [],--%>
-<%--            messages: []--%>
-<%--        });--%>
-<%--        $("#title").rules( "add", {--%>
-<%--            required: true,--%>
-<%--            messages: {--%>
-<%--                required: '<fmt:message key="label.empty" bundle="${lang}"/>'--%>
-<%--            }--%>
-<%--        });--%>
-<%--        if (listenGuidelineId == '') {--%>
-<%--            $("#uploadImage").rules( "add", {--%>
-<%--                required: true,--%>
-<%--                messages: {--%>
-<%--                    required: '<fmt:message key="label.empty" bundle="${lang}"/>'--%>
-<%--                }--%>
-<%--            });--%>
-<%--        }--%>
-<%--        $("#ListenGuidelineContent").rules( "add", {--%>
-<%--            required: function () {--%>
-<%--                CKEDITOR.instances.ListenGuidelineContent.updateElement();--%>
-<%--            },--%>
-<%--            messages: {--%>
-<%--                required: '<fmt:message key="label.empty" bundle="${lang}"/>'--%>
-<%--            }--%>
-<%--        });--%>
-<%--    }--%>
-<%--    function readURL(input, imageId) {--%>
-<%--        if (input.files && input.files[0]) {--%>
-<%--            var reader = new FileReader();--%>
-<%--            reader.onload = function (e) {--%>
-<%--                $('#' +imageId).attr('src', reader.result);--%>
-<%--            }--%>
-<%--            reader.readAsDataURL(input.files[0]);--%>
-<%--        }--%>
-<%--    }--%>
-<%--</script>--%>
+</script>
 <script type="text/javascript">
     $(document).ready(function () {
         hideAllWhenClickButton();
     });
-
     function hideAllWhenClickButton() {
-        $(button).click(function () {
-            $(p).hide();
+        $("#btnHide").click(function () {
+            $(".hideText").hide();
         })
     }
 </script>
