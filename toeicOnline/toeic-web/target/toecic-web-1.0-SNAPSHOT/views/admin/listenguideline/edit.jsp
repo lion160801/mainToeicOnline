@@ -169,16 +169,16 @@
 <%--        }--%>
 <%--    }--%>
 <%--</script>--%>
-<%--<script type="text/javascript">--%>
-<%--    $(document).ready(function () {--%>
-<%--        hideAllWhenClickButton();--%>
-<%--    });--%>
+<script type="text/javascript">
+    $(document).ready(function () {
+        hideAllWhenClickButton();
+    });
 
-<%--    function hideAllWhenClickButton() {--%>
-<%--        $(button).click(function () {--%>
-<%--            $(p).hide();--%>
-<%--        })--%>
-<%--    }--%>
-<%--</script>--%>
+    function hideAllWhenClickButton() {
+        $(button).click(function () {
+            $(p).hide();
+        })
+    }
+</script>
 </body>
 </html>
