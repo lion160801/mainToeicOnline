@@ -40,92 +40,90 @@
                                 ${messageResponse}
                         </div>
                     </c:if>
-                    <%--                    <form action="${formUrl}" method="post" enctype="multipart/form-data" id="formEdit">--%>
-                    <form action="${formUrl}" method="post" enctype="multipart/form-data" id="formEdit">
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label no-padding-right"><fmt:message
-                                    key="label.guideline.title" bundle="${lang}"/></label>
-                            <div class="col-sm-9">
-                                <input type="text" name="pojo.title"/>
-                            </div>
-                        </div>
-                        <br/>
-                        <br/>
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label no-padding-right"><fmt:message
-                                    key="label.grammarguideline.upload.image" bundle="${lang}"/></label>
-                            <div class="col-sm-9">
-                                <input type="file" name="file"/>
-                            </div>
-                        </div>
-                        <br/>
-                        <br/>
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label no-padding-right"><fmt:message
-                                    key="label.guideline.content" bundle="${lang}"/></label>
-                            <div class="col-sm-9">
-                                <input type="text" name="pojo.content"/>
-                            </div>
-                        </div>
-                        <%--                        <div class="form-group">--%>
-                        <%--                            <label class="col-sm-3 control-label no-padding-right"><fmt:message key="label.grammarguideline.upload.image.view" bundle="${lang}"/></label>--%>
-                        <%--                            <div class="col-sm-9">--%>
-                        <%--                                <c:if test="${not empty item.pojo.image}">--%>
-                        <%--                                    <c:set var="image" value="/repository/${item.pojo.image}"/>--%>
-                        <%--                                </c:if>--%>
-                        <%--                                <img src="${image}" id="viewImage" width="150px" height="150ox">--%>
-                        <%--                            </div>--%>
-                        <%--                        </div>--%>
-                        <br/>
-                        <br/>
-
-                        <%--                        <div class="form-group">--%>
-                        <%--                            <div class="col-sm-12">--%>
-                        <%--                                <c:if test="${not empty item.pojo.content}">--%>
-                        <%--                                    <c:set var="content" value="${item.pojo.content}"/>--%>
-                        <%--                                </c:if>--%>
-                        <%--                                <textarea name="pojo.content" cols="80" rows="10" id="ListenGuidelineContent">${content}</textarea>--%>
-                        <%--                            </div>--%>
-                        <%--                        </div>--%>
-                        <div class="form-group">
-                            <div class="col-sm-12">
-                                <input type="submit" class="btn btn-white btn-warning btn-bold"
-                                       value="<fmt:message key="label.done" bundle="${lang}"/>"/>
-                            </div>
-                        </div>
-                        <%--                        <c:if test="${not empty item.pojo.listenGuidelineId}">--%>
-                        <%--                            <input type="hidden" name="pojo.listenGuidelineId" value="${item.pojo.listenGuidelineId}"/>--%>
-                        <%--                        </c:if>--%>
-                    </form>
-
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label no-padding-right"></label>
-                        <div class="col-sm-9">
-                            <button id="btnHide">Click me</button>
-                        </div>
+                    <%--                    <div class="form-group">--%>
+                    <%--                        <label class="col-sm-3 control-label no-padding-right"></label>--%>
+                    <%--                        <div class="col-sm-9">--%>
+                    <%--                            <button>Click me</button>--%>
+                    <%--                        </div>--%>
+                    <%--                    </div>--%>
+                    <%--                    <div class="form-group">--%>
+                    <%--                        <label class="col-sm-3 control-label no-padding-right"></label>--%>
+                    <%--                        <div class="col-sm-9">--%>
+                    <%--                            <p>This is 1stP</p>--%>
+                    <%--                            <p>This is 2stP</p>--%>
+                    <%--                            <h2>This is h2</h2>--%>
+                    <%--                        </div>--%>
+                    <%--                    </div> --%>
+                    <%--                    <div class="form-group">--%>
+                    <%--                        <label class="col-sm-3 control-label no-padding-right"></label>--%>
+                    <%--                        <div class="col-sm-9">--%>
+                    <%--                            <input type="text" value="JSP-SERVLET" id="value"/>--%>
+                    <%--                        </div>--%>
+                    <%--                    </div>--%>
+                    <%--                    </br>--%>
+                    <%--                    <div class="form-group">--%>
+                    <%--                        <label class="col-sm-3 control-label no-padding-right"></label>--%>
+                    <%--                        <div class="col-sm-9">--%>
+                    <%--                            <p id="showValue">Nothing</p>--%>
+                    <%--                        </div>--%>
+                    <%--                    </div>--%>
+                    <%--                    </br>--%>
+                    <%--                    <div class="form-group">--%>
+                    <%--                        <label class="col-sm-3 control-label no-padding-right"></label>--%>
+                    <%--                        <div class="col-sm-9">--%>
+                    <%--                            <button onclick="usingValAction()">Show Inf</button>--%>
+                    <%--                        </div>--%>
+                    <%--                    </div>  --%>
+                    <%--                    <div class="form-group">--%>
+                    <%--                        <label class="col-sm-3 control-label no-padding-right"></label>--%>
+                    <%--                        <div class="col-sm-9">--%>
+                    <%--                            <input type="checkbox" id="testCheckbox"/>--%>
+                    <%--                        </div>--%>
+                    <%--                    </div>--%>
+                    <%-- Jquery-CSS Method--%>
+<%--                    <div class="form-group">--%>
+<%--                        <label class="col-sm-3 control-label no-padding-right"></label>--%>
+<%--                        <div class="col-sm-9">--%>
+<%--                            <p id="demoCssMethod1"> This is P</p>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                    </br>--%>
+<%--                    <div class="form-group">--%>
+<%--                        <label class="col-sm-3 control-label no-padding-right"></label>--%>
+<%--                        <div class="col-sm-9">--%>
+<%--                            <button id="demoCssMethod">Change text color</button>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+<%--                jQuery Closest() Method--%>
+                    <div style="width:500px;">div (great-grandparent)
+                        <ul>ul (second ancestor - second grandparent)
+                            <ul>ul (first ancestor - first grandparent)
+                                <li>li (direct parent)
+                                    <span>span</span>
+                                </li>
+                            </ul>
+                        </ul>
                     </div>
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label no-padding-right"></label>
-                        <div class="col-sm-9">
-                            <p>This is 1stP</p>
-                            <p class="hideText">This is 2stP</p>
-                            <h2>This is h2</h2>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
 </div>
-</script>
-<script type="text/javascript">
+
+<script>
     $(document).ready(function () {
-        hideAllWhenClickButton();
+        demoCssMethod();
     });
-    function hideAllWhenClickButton() {
-        $("#btnHide").click(function () {
-            $(".hideText").hide();
-        })
+
+    function usingValAction() {
+        var value = $("#value").val();
+        $("#showValue").html(value);
+    }
+
+    function demoCssMethod() {
+        $("#demoCssMethod").click(function () {
+            $("#demoCssMethod1").css("color", "blue");
+        });
     }
 </script>
 </body>
