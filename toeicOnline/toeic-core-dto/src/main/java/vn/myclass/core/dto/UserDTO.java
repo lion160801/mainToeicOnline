@@ -45,8 +45,8 @@ public class UserDTO implements Serializable {
         return fullname;
     }
 
-    public void setFullname(String fullname) {
-        this.fullname = fullname;
+    public void setFullname(String fullName) {
+        this.fullname = fullName;
     }
 
     public Timestamp getCreatedDate() {
