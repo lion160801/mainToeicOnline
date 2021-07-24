@@ -1,7 +1,10 @@
 package vn.myclass.command;
 
+import vn.myclass.core.dto.RoleDTO;
 import vn.myclass.core.dto.UserDTO;
 import vn.myclass.core.web.command.AbstractCommand;
+
+import java.util.List;
 
 public class UserCommand extends AbstractCommand<UserDTO> {
     public UserCommand(){
@@ -9,6 +12,16 @@ public class UserCommand extends AbstractCommand<UserDTO> {
     }
 
     private String confirmPassword;
+
+    private List<RoleDTO> roles;
+
+    public List<RoleDTO> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<RoleDTO> roles) {
+        this.roles = roles;
+    }
 
     public String getConfirmPassword() {
         return confirmPassword;

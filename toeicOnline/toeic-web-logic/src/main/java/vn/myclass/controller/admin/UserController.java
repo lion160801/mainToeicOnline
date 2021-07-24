@@ -2,7 +2,9 @@ package vn.myclass.controller.admin;
 
 import vn.myclass.command.UserCommand;
 import vn.myclass.core.dto.UserDTO;
+import vn.myclass.core.service.RoleService;
 import vn.myclass.core.service.UserService;
+import vn.myclass.core.service.impl.RoleServiceImpl;
 import vn.myclass.core.service.impl.UserServiceImpl;
 import vn.myclass.core.web.common.WebConstant;
 import vn.myclass.core.web.utils.FormUtil;
@@ -18,10 +20,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@WebServlet(urlPatterns = {"/admin-user-list.html","/ajax-user-edit.html"})
+@WebServlet(urlPatterns = {"/admin-user-list.html","/ajax-admin-user-edit.html"})
 public class UserController extends HttpServlet {
+    UserService userService = new UserServiceImpl();
+    RoleService roleService = new RoleServiceImpl();
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        UserService userService = new UserServiceImpl();
+
         UserCommand command = FormUtil.populate(UserCommand.class,request);
         UserDTO pojo = command.getPojo();
         if(command.getUrlType().equals(WebConstant.URL_LIST)){
@@ -33,6 +37,11 @@ public class UserController extends HttpServlet {
             RequestDispatcher rd = request.getRequestDispatcher("/views/admin/user/list.jsp");
             rd.forward(request,response);
         } else if (command.getUrlType().equals(WebConstant.URL_EDIT)){
+            if(pojo!=null && pojo.getUserId()!=null){
+                command.setPojo(userService.findById(pojo.getUserId()));
+            }
+            command.setRoles(roleService.findAll());
+            request.setAttribute(WebConstant.FORM_ITEM,command);
             RequestDispatcher rd = request.getRequestDispatcher("/views/admin/user/edit.jsp");
             rd.forward(request,response);
         }
