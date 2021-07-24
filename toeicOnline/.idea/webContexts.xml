@@ -4,6 +4,7 @@
     <option name="state">
       <map>
         <entry key="file://$PROJECT_DIR$/toeic-web/src/main/webapp/common/admin/menu.jsp" value="file://$PROJECT_DIR$/toeic-web/src/main/webapp/common/admin" />
+        <entry key="file://$PROJECT_DIR$/toeic-web/src/main/webapp/views/admin/user/list.jsp" value="file://$PROJECT_DIR$/toeic-web/src/main/webapp/views/admin/user" />
         <entry key="file://$PROJECT_DIR$/toeic-web/src/main/webapp/views/web/login.jsp" value="file://$PROJECT_DIR$/toeic-web/src/main/webapp/views/web" />
       </map>
     </option>
