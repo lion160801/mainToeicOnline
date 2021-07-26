@@ -15,6 +15,15 @@ public class UserCommand extends AbstractCommand<UserDTO> {
 
     private List<RoleDTO> roles;
 
+    public Integer getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(Integer roleId) {
+        this.roleId = roleId;
+    }
+
+    private Integer roleId;
     public List<RoleDTO> getRoles() {
         return roles;
     }
