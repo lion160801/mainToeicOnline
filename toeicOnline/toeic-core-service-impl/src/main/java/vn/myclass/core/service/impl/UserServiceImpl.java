@@ -2,6 +2,7 @@ package vn.myclass.core.service.impl;
 
 import vn.myclas.core.dao.UserDao;
 import vn.myclass.core.daoimpl.UserDaoImpl;
+import vn.myclass.core.dto.CheckLogin;
 import vn.myclass.core.dto.UserDTO;
 import vn.myclass.core.persistence.entity.UserEntity;
 import vn.myclass.core.service.UserService;
@@ -16,22 +17,23 @@ import java.util.Map;
 
 public class UserServiceImpl implements UserService {
     @Override
-    public UserDTO isUserExist(UserDTO dto) {
-        UserEntity entity = SingletonDaoUtil.getUserDaoInstance().findUserByUserNameAndPassword(dto.getName(),dto.getPassword());
-        return UserBeanUtil.entity2Dto(entity);
-    }
-
-    @Override
-    public UserDTO findRoleByUser(UserDTO dto) {
-        UserEntity entity = SingletonDaoUtil.getUserDaoInstance().findUserByUserNameAndPassword(dto.getName(),dto.getPassword());
-        return UserBeanUtil.entity2Dto(entity);
+    public CheckLogin checkLogin(String name, String password) {
+        CheckLogin checkLogin = new CheckLogin();
+        if (name != null && password != null) {
+            Object[] objects = SingletonDaoUtil.getUserDaoInstance().checkLogin(name, password);
+            checkLogin.setUserExist( (boolean) objects[0]);
+            if (checkLogin.isUserExist()) {
+                checkLogin.setRoleName((String) objects[1]) ;
+            }
+        }
+        return checkLogin;
     }
 
     @Override
     public Object[] findByProperty(Map<String, Object> property, String sortExpression, String sortDirection, Integer offset, Integer limit) {
-        Object[] objects = SingletonDaoUtil.getUserDaoInstance().findByProperty(property,sortExpression,sortDirection,offset,limit);
+        Object[] objects = SingletonDaoUtil.getUserDaoInstance().findByProperty(property, sortExpression, sortDirection, offset, limit);
         List<UserDTO> userDTOS = new ArrayList<UserDTO>();
-        for(UserEntity item: (List<UserEntity>)objects[1]){
+        for (UserEntity item : (List<UserEntity>) objects[1]) {
             UserDTO userDTO = UserBeanUtil.entity2Dto(item);
             userDTOS.add(userDTO);
         }
@@ -41,7 +43,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDTO findById(Integer userId) {
-        UserEntity entity= SingletonDaoUtil.getUserDaoInstance().findById(userId);
+        UserEntity entity = SingletonDaoUtil.getUserDaoInstance().findById(userId);
         UserDTO dto = UserBeanUtil.entity2Dto(entity);
         return dto;
     }

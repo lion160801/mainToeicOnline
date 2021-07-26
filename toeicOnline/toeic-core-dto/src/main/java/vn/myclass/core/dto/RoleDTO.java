@@ -1,8 +1,7 @@
 package vn.myclass.core.dto;
+import java.io.Serializable;
 
-
-
-public class RoleDTO {
+public class RoleDTO implements Serializable {
     private Integer roleId;
     private String name;
 
