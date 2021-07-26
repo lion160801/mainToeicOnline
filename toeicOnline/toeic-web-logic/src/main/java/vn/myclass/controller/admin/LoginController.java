@@ -8,6 +8,7 @@ import vn.myclass.core.service.UserService;
 import vn.myclass.core.service.impl.UserServiceImpl;
 import vn.myclass.core.web.common.WebConstant;
 import vn.myclass.core.web.utils.FormUtil;
+import vn.myclass.core.web.utils.SingletonServiceUtil;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -29,11 +30,11 @@ public class LoginController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         UserCommand command = FormUtil.populate(UserCommand.class,request);
         UserDTO pojo = command.getPojo();
-        UserService userService = new UserServiceImpl();
+
         try{
-            if (userService.isUserExist(pojo) != null){
-                if(userService.findRoleByUser(pojo)!=null && userService.findRoleByUser(pojo).getRoleDTO() !=null){
-                    if (userService.findRoleByUser(pojo).getRoleDTO().getName().equals(WebConstant.ROLE_ADMIN)){
+            if (SingletonServiceUtil.getUserServiceInstance().isUserExist(pojo) != null){
+                if(SingletonServiceUtil.getUserServiceInstance().findRoleByUser(pojo)!=null && SingletonServiceUtil.getUserServiceInstance().findRoleByUser(pojo).getRoleDTO() !=null){
+                    if (SingletonServiceUtil.getUserServiceInstance().findRoleByUser(pojo).getRoleDTO().getName().equals(WebConstant.ROLE_ADMIN)){
                         try {
                             response.sendRedirect("/admin-home.html");
                         }
@@ -41,7 +42,7 @@ public class LoginController extends HttpServlet {
                             log.error(e.getMessage(), e);
                         }
                     }
-                    else if (userService.findRoleByUser(pojo).getRoleDTO().getName().equals(WebConstant.ROLE_USER)){
+                    else if (SingletonServiceUtil.getUserServiceInstance().findRoleByUser(pojo).getRoleDTO().getName().equals(WebConstant.ROLE_USER)){
                         try {
                             response.sendRedirect("/home.html");
                         }
