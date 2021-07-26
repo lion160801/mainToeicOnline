@@ -3,6 +3,9 @@
 <c:url value="/ajax-admin-user-edit.html" var="editUserUrl">
     <c:param name="urlType" value="url_edit"/>
 </c:url>
+<c:url value="/admin-user-list.html" var="listUserUrl">
+    <c:param name="urlType" value="url_list"/>
+</c:url>
 <html>
 <head>
     <title><fmt:message key="label.user.management" bundle="${lang}"/></title>
@@ -134,8 +137,37 @@
         }
         $('#myModal').load(editUrl, '', function () {
             $('#myModal').modal('toggle');
+            addOrEditUser();
         });
     }
+
+    function addOrEditUser(){
+        $('#btnSave').click(function (){
+            $('#editUserForm').submit();
+        });
+
+        $('#editUserForm').submit(function (e){
+            e.preventDefault();
+            $('#crudationEdit').val('insert_update');
+            $.ajax({
+                type: $(this).attr('method'),
+                url: $(this).attr('action'),
+                data: $(this).serialize(),
+                datatype:'html',
+                success: function(res){
+                    if(res.trim()=="insert_success"){
+                        $('#crudaction').val('insert_success');
+                        $('#urlType').val('url_list');
+                        $('#formUrl').submit();
+                    }
+                },
+                error: function (res){
+                    console.log(res)
+                }
+            });
+        });
+    }
+
 </script>
 </body>
 </html>
