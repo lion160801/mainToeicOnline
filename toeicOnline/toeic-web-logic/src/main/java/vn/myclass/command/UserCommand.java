@@ -2,6 +2,7 @@ package vn.myclass.command;
 
 import vn.myclass.core.dto.RoleDTO;
 import vn.myclass.core.dto.UserDTO;
+import vn.myclass.core.dto.UserImportDTO;
 import vn.myclass.core.web.command.AbstractCommand;
 
 import java.util.List;
@@ -15,6 +16,18 @@ public class UserCommand extends AbstractCommand<UserDTO> {
 
     private List<RoleDTO> roles;
 
+    private Integer roleId;
+
+    public List<UserImportDTO> getUserImportDTOS() {
+        return userImportDTOS;
+    }
+
+    public void setUserImportDTOS(List<UserImportDTO> userImportDTOS) {
+        this.userImportDTOS = userImportDTOS;
+    }
+
+    private List<UserImportDTO> userImportDTOS;
+
     public Integer getRoleId() {
         return roleId;
     }
@@ -23,7 +36,7 @@ public class UserCommand extends AbstractCommand<UserDTO> {
         this.roleId = roleId;
     }
 
-    private Integer roleId;
+
     public List<RoleDTO> getRoles() {
         return roles;
     }
