@@ -6,6 +6,9 @@
 <c:url value="/admin-user-list.html" var="listUserUrl">
     <c:param name="urlType" value="url_list"/>
 </c:url>
+<c:url value="/admin-user-import-list.html" var="importUrl">
+    <c:param name="urlType" value="show_import_user"/>
+</c:url>
 <html>
 <head>
     <title><fmt:message key="label.user.management" bundle="${lang}"/></title>
@@ -65,8 +68,7 @@
                                             </button>
 
                                             <a flag="info"
-                                               class="dt-button buttons-colvis btn btn-white btn-primary btn-bold"
-                                               href="${importUrl}">
+                                               class="dt-button buttons-colvis btn btn-white btn-primary btn-bold" href="${importUrl}">
                                                 <span>
                                                     <i class="fa fa-file" aria-hidden="true"></i>
                                                 </span>
