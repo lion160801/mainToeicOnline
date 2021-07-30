@@ -43,6 +43,7 @@ public class UserController extends HttpServlet {
     private final String READ_EXCEL = "read_excel";
     private final String VALIDATE_IMPORT = "validate_import";
     private final String LIST_USER_IMPORT = "list_user_import";
+    private final String IMPORT_DATA = "import_data";
     ResourceBundle bundle = ResourceBundle.getBundle("ApplicationResources");
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -124,6 +125,12 @@ public class UserController extends HttpServlet {
 
                     response.sendRedirect("/admin-user-import-validate.html?urlType=validate_import");
                 }
+            }
+            if(command.getUrlType()!=null && command.getUrlType().equals(IMPORT_DATA)){
+                List<UserImportDTO> userImportDTOS = (List<UserImportDTO>) SessionUtil.getInstace().getValue(request,LIST_USER_IMPORT);
+                SingletonServiceUtil.getUserServiceInstance().saveUserImport(userImportDTOS);
+                SessionUtil.getInstace().removeSession(request,LIST_USER_IMPORT);
+                response.sendRedirect("/admin-user-list.html?urlType=url_list");
             }
         } catch (Exception e) {
             log.error(e.getMessage(), e);

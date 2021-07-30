@@ -1,6 +1,7 @@
 package vn.myclass.controller.admin;
 
 import org.apache.commons.fileupload.FileUploadException;
+import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import vn.myclass.command.ListenGuidelineCommand;
 import vn.myclass.core.common.utils.UploadUtil;
@@ -10,6 +11,7 @@ import vn.myclass.core.service.impl.ListenGuidelineServiceImpl;
 import vn.myclass.core.web.common.WebConstant;
 import vn.myclass.core.web.utils.FormUtil;
 import vn.myclass.core.web.utils.RequestUtil;
+import vn.myclass.core.web.utils.SingletonServiceUtil;
 
 import javax.annotation.Resource;
 import javax.servlet.RequestDispatcher;
@@ -26,26 +28,24 @@ import java.util.*;
 public class ListenGuidelineController extends HttpServlet {
     private final Logger log = Logger.getLogger(this.getClass());
 
-    private ListenGuidelineService guidelineService = new ListenGuidelineServiceImpl();
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
           ListenGuidelineCommand command = FormUtil.populate(ListenGuidelineCommand.class,request);
         ResourceBundle resourceBundle = ResourceBundle.getBundle("ApplicationResources");
-//       command.setMaxPageItems(2);
-//        RequestUtil.initSearchBean(request,command);
-//        Object[] objects = guidelineService.findListenGuidelineByProperties(null,command.getSortExpression(),
-//                command.getSortDirection(),command.getFirstItem(),command.getMaxPageItems());
-//        command.setListResult((List<ListenGuidelineDTO>) objects[1]);
-//        command.setTotalItems(Integer.parseInt(objects[0].toString()));
-//                request.setAttribute(WebConstant.ALERT,WebConstant.TYPE_SUCCESS);
+
+//        HttpSession session = request.getSession();
+//        request.setAttribute(WebConstant.ALERT,WebConstant.TYPE_SUCCESS);
 //        request.setAttribute(WebConstant.MESSAGE_RESPONSE,resourceBundle.getString("label.guideline.listen.add.success"));
-        HttpSession session = request.getSession();
-        if(session!=null){
-            session.setAttribute(WebConstant.ALERT,session.getAttribute(WebConstant.ALERT));
-            session.setAttribute(WebConstant.MESSAGE_RESPONSE,session.getAttribute(WebConstant.MESSAGE_RESPONSE));
-        }
-        request.setAttribute(WebConstant.LIST_ITEMS,command);
+//
+//
+//        if(session!=null){
+//            session.setAttribute(WebConstant.ALERT,session.getAttribute(WebConstant.ALERT));
+//            session.setAttribute(WebConstant.MESSAGE_RESPONSE,session.getAttribute(WebConstant.MESSAGE_RESPONSE));
+//        }
+
         if(command.getUrlType()!=null && command.getUrlType().equals(WebConstant.URL_LIST)){
+            excuteSearchListenGuideline(request,command);
+            request.setAttribute(WebConstant.LIST_ITEMS,command);
             RequestDispatcher rd = request.getRequestDispatcher("/views/admin/listenguideline/list.jsp");
             rd.forward(request,response);
         }
@@ -53,15 +53,33 @@ public class ListenGuidelineController extends HttpServlet {
             RequestDispatcher rd = request.getRequestDispatcher("/views/admin/listenguideline/edit.jsp");
             rd.forward(request,response);
         }
-        session.removeAttribute(WebConstant.ALERT);
-        session.removeAttribute(WebConstant.MESSAGE_RESPONSE);
+//        session.removeAttribute(WebConstant.ALERT);
+//        session.removeAttribute(WebConstant.MESSAGE_RESPONSE);
     }
+
+    private void excuteSearchListenGuideline(HttpServletRequest request, ListenGuidelineCommand command) {
+        Map<String,Object> properties = buildeMapProperties(command);
+        RequestUtil.initSearchBean(request,command);
+        Object[] objects = SingletonServiceUtil.getListenGuidelineServiceInstance().findListenGuidelineByProperties(properties,command.getSortExpression(),
+                command.getSortDirection(),command.getFirstItem(),command.getMaxPageItems());
+        command.setListResult((List<ListenGuidelineDTO>) objects[1]);
+        command.setTotalItems(Integer.parseInt(objects[0].toString()));
+    }
+
+    private Map<String, Object> buildeMapProperties(ListenGuidelineCommand command) {
+        Map<String,Object> properties = new HashMap<String,Object>();
+        if(StringUtils.isNotBlank(command.getPojo().getTitle())){
+            properties.put("title",command.getPojo().getTitle());
+        }
+        return properties;
+    }
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         ListenGuidelineCommand command = new ListenGuidelineCommand();
         UploadUtil uploadUtil = new UploadUtil();
         ResourceBundle bundle = ResourceBundle.getBundle("ApplicationResources");
         HttpSession session = request.getSession();
-        Set<String> valueTitle = buildSetValueListenGuideline();
+//        Set<String> valueTitle = buildSetValueListenGuideline();
 //        try {
 //            Object[] objects = uploadUtil.writeOrUpdateFile(request,valueTitle,WebConstant.LISTENGUIDELINE);
 //            Map<String,String> mapValue = (Map<String, String>) objects[3];
@@ -107,11 +125,12 @@ public class ListenGuidelineController extends HttpServlet {
 //        }
 //        return dto;
 //    }
-    private Set<String> buildSetValueListenGuideline() {
-        Set<String> returnValue = new HashSet<String>();
-        returnValue.add("pojo.title");
-        returnValue.add("pojo.content");
-        returnValue.add("pojo.listenGuidelineId");
-        return returnValue;
-    }
+
+//    private Set<String> buildSetValueListenGuideline() {
+//        Set<String> returnValue = new HashSet<String>();
+//        returnValue.add("pojo.title");
+//        returnValue.add("pojo.content");
+//        returnValue.add("pojo.listenGuidelineId");
+//        return returnValue;
+//    }
 }

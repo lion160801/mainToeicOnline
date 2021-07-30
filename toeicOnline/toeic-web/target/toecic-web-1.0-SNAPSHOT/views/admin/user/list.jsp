@@ -6,7 +6,7 @@
 <c:url value="/admin-user-list.html" var="listUserUrl">
     <c:param name="urlType" value="url_list"/>
 </c:url>
-<c:url value="/admin-user-import-list.html" var="importUrl">
+<c:url value="/admin-user-import.html" var="importUrl">
     <c:param name="urlType" value="show_import_user"/>
 </c:url>
 <html>

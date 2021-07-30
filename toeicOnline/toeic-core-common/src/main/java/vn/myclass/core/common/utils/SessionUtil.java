@@ -18,7 +18,8 @@ public class SessionUtil {
     public Object getValue(HttpServletRequest request, String key){
         return request.getSession().getAttribute(key);
     }
-    public void removeSession(HttpSession session, String key){
-        session.removeAttribute(key);
+
+    public void removeSession(HttpServletRequest request, String key){
+        request.getSession().removeAttribute(key);
     }
 }
