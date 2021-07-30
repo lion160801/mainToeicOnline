@@ -46,7 +46,7 @@
                             <label class="col-sm-3 control-label no-padding-right"><fmt:message
                                     key="label.guideline.title" bundle="${lang}"/></label>
                             <div class="col-sm-9">
-                                <input type="text" name="pojo.title"/>
+                                <input type="text" name="pojo.title" id="title"/>
                             </div>
                         </div>
                         <br/>
@@ -55,7 +55,7 @@
                             <label class="col-sm-3 control-label no-padding-right"><fmt:message
                                     key="label.grammarguideline.upload.image" bundle="${lang}"/></label>
                             <div class="col-sm-9">
-                                <input type="file" name="file"/>
+                                <input type="file" name="file" id="uploadImage"/>
                             </div>
                         </div>
                         <br/>
@@ -63,8 +63,14 @@
                         <div class="form-group">
                             <label class="col-sm-3 control-label no-padding-right"><fmt:message
                                     key="label.guideline.content" bundle="${lang}"/></label>
-                            <div class="col-sm-9">
-                                <input type="text" name="pojo.content"/>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <c:if test="${not empty item.pojo.content}">
+                                    <c:set var="content" value="${item.pojo.content}"/>
+                                </c:if>
+                                <textarea name="pojo.content" cols="80" rows="10"
+                                          id="listenGuidelineContent">${content}</textarea>
                             </div>
                         </div>
                         <%--                        <div class="form-group">--%>
@@ -97,26 +103,44 @@
                         <%--                            <input type="hidden" name="pojo.listenGuidelineId" value="${item.pojo.listenGuidelineId}"/>--%>
                         <%--                        </c:if>--%>
                     </form>
-
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label no-padding-right"></label>
-                        <div class="col-sm-9">
-                            <button>Click me</button>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label no-padding-right"></label>
-                        <div class="col-sm-9">
-                            <p>This is 1stP</p>
-                            <p>This is 2stP</p>
-                            <h2>This is h2</h2>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<script>
+    $(document).ready(function () {
+        CKEDITOR.replace('listenGuidelineContent');
+        validateData();
+    });
+    function validateData(){
+        $("#formEdit").validate({
+            ignore:[],
+            rules: [],
+            message: [],
+        });
+        $("#title").rules("add", {
+            required: true,
+            messages: {
+                required: '<fmt:message key="label.empty" bundle="${lang}"/>'
+            }
+        });
+        $("#uploadImage").rules("add", {
+            required: true,
+            messages: {
+                required: '<fmt:message key="label.empty" bundle="${lang}"/>'
+            }
+        });
+        $("#listenGuidelineContent").rules("add", {
+            required: function (){
+                CKEDITOR.instances.listenGuidelineContent.updateElement();
+            },
+            messages: {
+                required: '<fmt:message key="label.empty" bundle="${lang}"/>'
+            }
+        });
+    }
+</script>
 <%--<script>--%>
 <%--    var listenGuidelineId = '';--%>
 <%--    <c:if test="${not empty item.pojo.listenGuidelineId}">--%>
@@ -180,5 +204,7 @@
 <%--        })--%>
 <%--    }--%>
 <%--</script>--%>
+
+
 </body>
 </html>

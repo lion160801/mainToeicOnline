@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@include file="/common/taglib.jsp"%>
 <c:url var="requestUrl" value="/admin-guideline-listen-list.html"/>
+<c:url var="formUrl" value="/admin-guideline-listen-list.html"/>
 <c:url value="/admin-guideline-listen-edit.html" var="listenGuidelineEditUrl">
     <c:param name="urlType" value="url_edit"/>
     <%--&lt;%&ndash;</c:url>&ndash;%&gt;--%>
@@ -128,18 +129,18 @@
         </div>
     </div>
 </div>
-<%--<script>--%>
-<%--    $(document).ready(function () {--%>
-<%--         $('#btnSearch').click(function () {--%>
-<%--             $('#formUrl').submit();--%>
-<%--         });--%>
-<%--    });--%>
-<%--    function warningBeforeDelete() {--%>
-<%--        showAlertBeforeDelete(function () {--%>
-<%--            $('#crudaction').val('redirect_delete');--%>
-<%--            $('#formUrl').submit();--%>
-<%--        });--%>
-<%--    }--%>
-<%--</script>--%>
+<script>
+    $(document).ready(function () {
+         $('#btnSearch').click(function () {
+             $('#formUrl').submit();
+         });
+    });
+    function warningBeforeDelete() {
+        showAlertBeforeDelete(function () {
+            $('#crudaction').val('redirect_delete');
+            $('#formUrl').submit();
+        });
+    }
+</script>
 </body>
 </html>

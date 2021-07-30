@@ -19,8 +19,8 @@
     <script type="text/javascript" src="<c:url value="/templates/admin/js/global_admin_script.js"/>"></script>
     <script src="<c:url value='/templates/admin/assets/js/jquery.validate.min.js' />"></script>
 
-    <%--ckeditor plugin--%>
-<%--    <script type="text/javascript" src="<c:url value="/ckeditor/ckeditor.js"/>"></script>--%>
+<%--    ckeditor plugin--%>
+    <script type="text/javascript" src="<c:url value="/ckeditor/ckeditor.js"/>"></script>
 
     <%--sweetalert--%>
 <%--    <script type='text/javascript' src='<c:url value="/templates/admin/sweetalert/sweetalert2.min.js"/>'></script>--%>
