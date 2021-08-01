@@ -13,7 +13,6 @@ public class ListenGuidelineDTO implements Serializable {
     private Timestamp createdDate;
     private Timestamp modifiedDate;
 
-
     public Integer getListenGuidelineId() {
         return listenGuidelineId;
     }

@@ -2,6 +2,7 @@ package vn.myclass.core.data.daoimpl;
 
 
 import javassist.tools.rmi.ObjectNotFoundException;
+import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -27,6 +28,7 @@ public class AbstractDao<ID extends Serializable,T> implements GenericDao<ID,T> 
     public String getPersistenceClassName() {
         return this.persistenceClass.getSimpleName();
     }
+    private final Logger log =Logger.getLogger(this.getClass());
 
     @Override
     public List<T> findAll() {
@@ -45,6 +47,7 @@ public class AbstractDao<ID extends Serializable,T> implements GenericDao<ID,T> 
         catch (HibernateException e)
         {
             transaction.rollback();
+            log.error(e.getMessage(),e);
             throw e;
         }
         finally {
@@ -66,6 +69,7 @@ public class AbstractDao<ID extends Serializable,T> implements GenericDao<ID,T> 
         }
         catch (HibernateException e) {
             transaction.rollback();
+            log.error(e.getMessage(),e);
             throw e;
         }
         finally {
@@ -84,6 +88,7 @@ public class AbstractDao<ID extends Serializable,T> implements GenericDao<ID,T> 
         }
         catch (HibernateException e) {
             transaction.rollback();
+            log.error(e.getMessage(),e);
             throw e;
         }
         finally {
@@ -146,20 +151,22 @@ public class AbstractDao<ID extends Serializable,T> implements GenericDao<ID,T> 
                 sql1.append(" order by ").append(sortExpression);
                 sql1.append(" "+ (sortDirection.equals(CoreConstant.SORT_ASC)?"asc":"desc"));
             }
-
             Query query1 = session.createQuery(sql1.toString());
             if(property.size()> 0) {
                 for (int i2 =0;i2<params.length;i2++){
                     query1.setParameter(params[i2],values[i2]);
                 }
             }
+            System.out.println(query1.toString());
             if(offset != null && offset >=0){
                 query1.setFirstResult(offset);
             }
             if (limit!= null && limit>0){
                 query1.setMaxResults(limit);
             }
+
             list = query1.list();
+
 
             StringBuilder sql2 = new StringBuilder("select count(*) from ");
             sql2.append(getPersistenceClassName());
@@ -184,6 +191,7 @@ public class AbstractDao<ID extends Serializable,T> implements GenericDao<ID,T> 
         }
         catch (HibernateException e){
             transaction.rollback();
+            log.error(e.getMessage(),e);
             throw e;
         }
         finally {
@@ -207,7 +215,8 @@ public class AbstractDao<ID extends Serializable,T> implements GenericDao<ID,T> 
         }
         catch (HibernateException e){
         transaction.rollback();
-        throw e;
+            log.error(e.getMessage(),e);
+            throw e;
         }
         finally {
             session.close();
@@ -228,6 +237,7 @@ public class AbstractDao<ID extends Serializable,T> implements GenericDao<ID,T> 
 
         }catch (HibernateException e){
             transaction.rollback();
+            log.error(e.getMessage(),e);
             throw e;
         }
         finally {

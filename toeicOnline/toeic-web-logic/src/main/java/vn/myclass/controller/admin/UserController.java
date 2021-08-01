@@ -5,7 +5,6 @@ import org.apache.log4j.Logger;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import vn.myclass.command.UserCommand;
 import vn.myclass.core.common.utils.ExcelPoiUtil;
 import vn.myclass.core.common.utils.SessionUtil;
@@ -13,31 +12,23 @@ import vn.myclass.core.common.utils.UploadUtil;
 import vn.myclass.core.dto.RoleDTO;
 import vn.myclass.core.dto.UserDTO;
 import vn.myclass.core.dto.UserImportDTO;
-import vn.myclass.core.service.RoleService;
-import vn.myclass.core.service.UserService;
-import vn.myclass.core.service.impl.RoleServiceImpl;
-import vn.myclass.core.service.impl.UserServiceImpl;
 import vn.myclass.core.web.common.WebConstant;
 import vn.myclass.core.web.utils.FormUtil;
 import vn.myclass.core.web.utils.SingletonServiceUtil;
 import vn.myclass.core.web.utils.WebCommonUtil;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.sql.Timestamp;
 import java.util.*;
 
-@WebServlet(urlPatterns = {"/admin-user-list.html", "/ajax-admin-user-edit.html", "/admin-user-import.html",
-        "/admin-user-import-validate.html"})
+@WebServlet(urlPatterns = {"/admin-user-list.html", "/ajax-admin-user-edit.html",
+                           "/admin-user-import.html", "/admin-user-import-validate.html"})
 public class UserController extends HttpServlet {
+
     private final Logger log = Logger.getLogger(this.getClass());
     private final String SHOW_IMPORT_USER = "show_import_user";
     private final String READ_EXCEL = "read_excel";
@@ -45,10 +36,12 @@ public class UserController extends HttpServlet {
     private final String LIST_USER_IMPORT = "list_user_import";
     private final String IMPORT_DATA = "import_data";
     ResourceBundle bundle = ResourceBundle.getBundle("ApplicationResources");
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         UserCommand command = FormUtil.populate(UserCommand.class, request);
         UserDTO pojo = command.getPojo();
+
         if (command.getUrlType() != null && command.getUrlType().equals(WebConstant.URL_LIST)) {
             Map<String, Object> mapProperty = new HashMap<String, Object>();
             Object[] objects = SingletonServiceUtil.getUserServiceInstance().findByProperty(mapProperty, command.getSortExpression(), command.getSortDirection(), command.getFirstItem(), command.getMaxPageItems());

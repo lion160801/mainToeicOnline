@@ -118,7 +118,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void saveUserImport(List<UserImportDTO> userImportDTOS) {
-
         for(UserImportDTO item:userImportDTOS){
             if(item.isValid()){
                 UserEntity userEntity = new UserEntity();
