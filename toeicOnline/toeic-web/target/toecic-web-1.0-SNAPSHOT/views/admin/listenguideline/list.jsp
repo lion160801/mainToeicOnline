@@ -140,11 +140,6 @@
                                            data-toggle="tooltip"
                                            title="<fmt:message key='label.listenguideline.update' bundle='${lang}'/>">
                                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-
-                                        <a class="btn btn-sm btn-danger btn-cancel" data-toggle="tooltip"
-                                           title="<fmt:message key='label.listenguideline.delete' bundle='${lang}'/>">
-                                            <i class="fa fa-trash" aria-hidden="true"></i>
-                                        </a>
                                     </display:column>
                                 </display:table>
                             </fmt:bundle>
@@ -164,11 +159,10 @@
             $('#formUrl').submit();
         });
     });
-
     function warningBeforeDelete() {
         showAlertBeforeDelete(function () {
             $('#crudaction').val('redirect_delete');
-            $('#formUrl').submit();
+
         });
     }
 </script>

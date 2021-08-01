@@ -23,8 +23,8 @@
     <script type="text/javascript" src="<c:url value="/ckeditor/ckeditor.js"/>"></script>
 
     <%--sweetalert--%>
-<%--    <script type='text/javascript' src='<c:url value="/templates/admin/sweetalert/sweetalert2.min.js"/>'></script>--%>
-<%--    <link rel="stylesheet" href="<c:url value="/templates/admin/sweetalert/sweetalert2.min.css"/>">--%>
+    <script type='text/javascript' src='<c:url value="/templates/admin/sweetalert/sweetalert2.min.js"/>'></script>
+    <link rel="stylesheet" href="<c:url value="/templates/admin/sweetalert/sweetalert2.min.css"/>">
 
     <%--datatable--%>
     <%--<link href="<c:url value="/templates/data-table/media/css/dataTables.bootstrap4_v4.6.1.min.css"/>" rel="stylesheet">
@@ -81,7 +81,7 @@
 <script src="<c:url value='/templates/admin/assets/js/jquery-ui.min.js'/>"></script>
 
 <script type="text/javascript">
-    function showAlertBeforeDelete(callback) {
+    function showAlertBeforeDelete() {
         swal({
             title: "Xác nhận xóa",
             text: "Bạn có chắc chắn xóa những dòng đã chọn",
@@ -91,11 +91,7 @@
             cancelButtonText: "Hủy bỏ",
             confirmButtonClass: "btn btn-success",
             cancelButtonClass: "btn btn-danger"
-        }).then(function (isConfirm) {
-            if (isConfirm) {
-                callback();
-            }
-        });
+        })
     }
 </script>
 </body>
