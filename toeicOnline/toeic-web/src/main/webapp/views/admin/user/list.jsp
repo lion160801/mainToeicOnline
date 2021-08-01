@@ -59,7 +59,7 @@
                                             <%--                      Delete--%>
                                             <button type="button"
                                                     class="dt-button buttons-html5 btn btn-white btn-primary btn-bold"
-                                                    id="deleteAll" disabled
+                                                    id="deleteAll" disabled onclick="warningBeforeDelete()"
                                                     data-toggle="tooltip"
                                                     title="<fmt:message key='label.delete.all' bundle='${lang}'/>">
                                                  <span>
@@ -177,7 +177,13 @@
             });
         });
     }
-
+    function warningBeforeDelete() {
+        showAlertBeforeDelete(function () {
+            $('#urlType').val('url_list');
+            $('#crudaction').val('redirect_delete');
+            $('#formUrl').submit();
+        });
+    }
 </script>
 </body>
 </html>

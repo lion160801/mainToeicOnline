@@ -35,6 +35,16 @@ public class ListenGuidelineController extends HttpServlet {
         ResourceBundle resourceBundle = ResourceBundle.getBundle("ApplicationResources");
 
         if (command.getUrlType() != null && command.getUrlType().equals(WebConstant.URL_LIST)) {
+            if(command.getCrudaction()!=null && command.getCrudaction().equals(WebConstant.REDIRECT_DELETE)){
+                List<Integer> ids = new ArrayList<Integer>();
+                for(String item :command.getCheckList()){
+                    ids.add(Integer.parseInt(item));
+                }
+                Integer result = SingletonServiceUtil.getListenGuidelineServiceInstance().delete(ids);
+                if(result!=ids.size()){
+                    command.setCrudaction(WebConstant.REDIRECT_ERROR);
+                }
+            }
             excuteSearchListenGuideline(request, command);
             if (command.getCrudaction() != null) {
                 Map<String, String> mapMessage = buildMapRedirectMessage(resourceBundle);

@@ -132,4 +132,10 @@ public class UserServiceImpl implements UserService {
             }
         }
     }
+
+    @Override
+    public Integer delete(List<Integer> ids) {
+        Integer result = SingletonDaoUtil.getUserDaoInstance().delete(ids);
+        return result;
+    }
 }

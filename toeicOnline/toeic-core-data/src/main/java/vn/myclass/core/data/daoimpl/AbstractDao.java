@@ -221,7 +221,7 @@ public class AbstractDao<ID extends Serializable,T> implements GenericDao<ID,T> 
         finally {
             session.close();
         }
-        return null;
+        return count;
     }
 
     @Override
