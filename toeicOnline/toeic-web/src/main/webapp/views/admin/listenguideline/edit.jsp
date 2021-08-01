@@ -64,7 +64,7 @@
                             <label class="col-sm-3 control-label no-padding-right"></label>
                             <div class="col-sm-9">
                                 <c:if test="${not empty item.pojo.image}">
-                                    <c:set var="image" value="/fileupload/listenguideline/${item.pojo.image}"/>
+                                    <c:set var="image" value="/repository/${item.pojo.image}"/>
                                 </c:if>
                                 <img src="${image}" id="viewImage" width="150px" height="150px">
                             </div>

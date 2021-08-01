@@ -17,4 +17,5 @@ public class WebConstant {
     public static final String REDIRECT_UPDATE = "redirect_update";
     public static final String REDIRECT_DELETE = "redirect_delete";
     public static final String REDIRECT_ERROR = "redirect_error";
+
 }
