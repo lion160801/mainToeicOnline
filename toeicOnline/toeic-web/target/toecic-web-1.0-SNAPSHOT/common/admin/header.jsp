@@ -22,6 +22,7 @@
 
                     </a>
                 <li class="light-blue dropdown-modal">
+                <c:if test="${not empty login_name}">
                     <c:url var="logoutUrl" value="/logout.html">
                         <c:param name="action" value="logout"/>
                     </c:url>
@@ -29,6 +30,7 @@
                         <i class="ace-icon fa fa-power-off"></i>
                         <fmt:message key="label.logout" bundle="${lang}"/>
                     </a>
+                </c:if>
                 </li>
                 </li>
             </ul>

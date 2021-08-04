@@ -81,7 +81,7 @@
                                     <c:set var="content" value="${item.pojo.content}"/>
                                 </c:if>
                                 <textarea name="pojo.content" cols="80" rows="10"
-                                          id="listenGuidelineContent">${content}</textarea>
+                                          id="ListenGuidelineContent">${content}</textarea>
                             </div>
                         </div>
                         <br/>
@@ -107,7 +107,21 @@
         listenGuidelineId = ${item.pojo.listenGuidelineId}
     </c:if>
     $(document).ready(function () {
-        CKEDITOR.replace('listenGuidelineContent');
+        //CKEDITOR.replace( 'ListenGuidelineContent' );
+
+        var editor = CKEDITOR.replace( 'ListenGuidelineContent' );
+        CKFinder.setupCKEditor( editor, '/ckfinder/' );
+
+
+        // CKEDITOR.replace( 'ListenGuidelineContent',
+        //     {
+        //         filebrowserBrowseUrl : '/ckfinder/ckfinder.html',
+        //         filebrowserImageBrowseUrl : '/ckfinder/ckfinder.html?type=Images',
+        //         filebrowserFlashBrowseUrl : '/ckfinder/ckfinder.html?type=Flash',
+        //         filebrowserUploadUrl : '/ckfinder/core/connector/java/connector.java?command=QuickUpload&type=Files',
+        //         filebrowserImageUploadUrl : '/ckfinder/core/connector/java/connector.java?command=QuickUpload&type=Images',
+        //         filebrowserFlashUploadUrl : '/ckfinder/core/connector/java/connector.java?command=QuickUpload&type=Flash'
+        //     });
         validateData();
         $("#uploadImage").change(function () {
             readUrl(this, "viewImage");
@@ -134,9 +148,9 @@
                 }
             });
         }
-        $("#listenGuidelineContent").rules("add", {
+        $("#ListenGuidelineContent").rules("add", {
             required: function () {
-                CKEDITOR.instances.listenGuidelineContent.updateElement();
+                CKEDITOR.instances.ListenGuidelineContent.updateElement();
             },
             messages: {
                 required: '<fmt:message key="label.empty" bundle="${lang}"/>'

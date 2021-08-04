@@ -22,6 +22,33 @@ public class UserEntity {
     @OneToMany(mappedBy = "userEntity",fetch = FetchType.LAZY)
     private List<CommentEntity> commentEntityList;
 
+    public List<CommentEntity> getCommentEntityList() {
+        return commentEntityList;
+    }
+
+    public void setCommentEntityList(List<CommentEntity> commentEntityList) {
+        this.commentEntityList = commentEntityList;
+    }
+
+    public List<ResultEntity> getResults() {
+        return results;
+    }
+
+    public void setResults(List<ResultEntity> results) {
+        this.results = results;
+    }
+
+    public RoleEntity getRoleEntity() {
+        return roleEntity;
+    }
+
+    public void setRoleEntity(RoleEntity roleEntity) {
+        this.roleEntity = roleEntity;
+    }
+
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    private List<ResultEntity> results;
+
     @ManyToOne
     @JoinColumn(name = "roleid")
     private RoleEntity roleEntity;

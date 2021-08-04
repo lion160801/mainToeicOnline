@@ -19,20 +19,21 @@
     <script type="text/javascript" src="<c:url value="/templates/admin/js/global_admin_script.js"/>"></script>
     <script src="<c:url value='/templates/admin/assets/js/jquery.validate.min.js' />"></script>
 
+
+<%--    <script src="https://ckeditor.com/apps/ckfinder/3.5.0/ckfinder.js"></script>--%>
 <%--    ckeditor plugin--%>
     <script type="text/javascript" src="<c:url value="/ckeditor/ckeditor.js"/>"></script>
 
     <%--sweetalert--%>
     <script type='text/javascript' src='<c:url value="/templates/admin/sweetalert/sweetalert2.min.js"/>'></script>
     <link rel="stylesheet" href="<c:url value="/templates/admin/sweetalert/sweetalert2.min.css"/>">
-
     <%--datatable--%>
     <%--<link href="<c:url value="/templates/data-table/media/css/dataTables.bootstrap4_v4.6.1.min.css"/>" rel="stylesheet">
     <script type="text/javascript" src="<c:url value="/templates/data-table/data_table-1.0.0.js"/>"></script>
     <script type="text/javascript" src="<c:url value="/templates/data-table/data-table-bootstrap4-1.0.0.js"/>"></script>--%>
-    <%--ckfinder--%>
-<%--    <script type="text/javascript" src="<c:url value="/ckfinder/ckfinder.js"/>"></script>--%>
 
+    <%--ckfinder--%>
+    <script type="text/javascript" src="<c:url value="/ckfinder/ckfinder.js"/>"></script>
 </head>
 <body class="no-skin">
 
