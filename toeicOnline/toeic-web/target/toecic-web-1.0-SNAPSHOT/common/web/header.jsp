@@ -27,7 +27,7 @@
 
                                 <li><a href="service.html">Services</a></li>
                                 <c:if test="${not empty login_name}">
-                                    <li>Welcome!, ${login_name}</li>
+                                    <li>Welcome!${login_name}</li>
                                     <c:url var="logoutUrl" value="/logout.html">
                                         <c:param name="action" value="logout"/>
                                     </c:url>

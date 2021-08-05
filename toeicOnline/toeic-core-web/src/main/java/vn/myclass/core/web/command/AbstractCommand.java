@@ -15,6 +15,15 @@ public class AbstractCommand<T> {
     private String[] checkList;
     private String messageResponse;
     private int page = 1;
+    private int totalPages;
+
+    public int getTotalPages() {
+        return totalPages;
+    }
+
+    public void setTotalPages(int totalPages) {
+        this.totalPages = totalPages;
+    }
 
     public String getUrlType() {
         return urlType;

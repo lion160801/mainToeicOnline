@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
-<%@include file="/common/taglib.jsp"%>
+         pageEncoding="UTF-8" %>
+<%@include file="/common/taglib.jsp" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -17,11 +17,13 @@
                     <div class="span6">
                         <div class="carousel-caption">
                             <h1>TÒNG</h1>
-                            <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                            <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit
+                                non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id
+                                elit.</p>
                             <a class="btn btn-large btn-primary" href="#">Sign up today</a>
                         </div>
                     </div>
-                    <div class="span6"> <img src="img/slide/slide1.jpg"></div>
+                    <div class="span6"><img src="img/slide/slide1.jpg"></div>
                 </div>
             </div>
         </div>
@@ -31,11 +33,13 @@
                     <div class="span6">
                         <div class="carousel-caption">
                             <h1>Example headline</h1>
-                            <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                            <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit
+                                non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id
+                                elit.</p>
                             <a class="btn btn-large btn-primary" href="#">Sign up today</a>
                         </div>
                     </div>
-                    <div class="span6"> <img src="img/slide/slide2.jpg"></div>
+                    <div class="span6"><img src="img/slide/slide2.jpg"></div>
                 </div>
             </div>
         </div>
@@ -57,16 +61,15 @@
 
     <div class="span4">
         <img src="img/icon3.png">
-        <h2>Feature A</h2>
+        <h2><fmt:message key="label.guideline.listen" bundle="${lang}"/></h2>
         <p>
             Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
         </p>
 
-        <a href="#">Read More &rarr;</a>
-
+        <a href="<c:url value="/danh-sach-huong-dan-nghe.html"/>">Read More &rarr;</a>
     </div>
 
-    <div class="span4">
+    <div class=" span4">
         <img src="img/icon2.png">
         <h2>Feature B</h2>
         <p>
@@ -100,7 +103,9 @@
     <div class="span6">
         <img class="hidden-phone" src="img/icon4.png" alt="">
         <h1>Fully Responsive</h1>
-        <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+        <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum
+            tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas
+            semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
         <a href="#">Read More &rarr;</a>
     </div>
 </div>
