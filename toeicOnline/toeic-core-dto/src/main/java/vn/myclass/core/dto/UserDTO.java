@@ -2,30 +2,20 @@ package vn.myclass.core.dto;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.List;
 
-
+/**
+ * Created by Admin on 8/7/2017.
+ */
 public class UserDTO implements Serializable {
-
     private Integer userId;
-
     private String name;
-
     private String password;
-
-    private String fullname;
-
+    private String fullName;
     private Timestamp createdDate;
-
     private RoleDTO roleDTO;
     private UserImportDTO userImportDTO;
-
-    public UserImportDTO getUserImportDTO() {
-        return userImportDTO;
-    }
-
-    public void setUserImportDTO(UserImportDTO userImportDTO) {
-        this.userImportDTO = userImportDTO;
-    }
+    private List<ResultDTO> results;
 
     public Integer getUserId() {
         return userId;
@@ -51,12 +41,12 @@ public class UserDTO implements Serializable {
         this.password = password;
     }
 
-    public String getFullname() {
-        return fullname;
+    public String getFullName() {
+        return fullName;
     }
 
-    public void setFullname(String fullName) {
-        this.fullname = fullName;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
     public Timestamp getCreatedDate() {
@@ -73,5 +63,21 @@ public class UserDTO implements Serializable {
 
     public void setRoleDTO(RoleDTO roleDTO) {
         this.roleDTO = roleDTO;
+    }
+
+    public UserImportDTO getUserImportDTO() {
+        return userImportDTO;
+    }
+
+    public void setUserImportDTO(UserImportDTO userImportDTO) {
+        this.userImportDTO = userImportDTO;
+    }
+
+    public List<ResultDTO> getResults() {
+        return results;
+    }
+
+    public void setResults(List<ResultDTO> results) {
+        this.results = results;
     }
 }

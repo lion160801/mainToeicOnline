@@ -70,7 +70,7 @@
             if ($('input[name="answerUser"]:checked').length > 0) {
                 $('#formUrl').submit();
             } else {
-                alert("Ban chua chon dap an nao ca!");
+                alert("Ban chua chon dp an nao ca!");
             }
         });
         $('#btnAgain').click(function () {

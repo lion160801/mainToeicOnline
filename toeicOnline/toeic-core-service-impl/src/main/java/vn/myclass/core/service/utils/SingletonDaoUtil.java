@@ -11,6 +11,8 @@ public class SingletonDaoUtil {
     private static ExerciseQuestionDaoImpl exerciseQuestionDaoImpl = null;
     private static ExaminationDaoImpl examinationDaoImpl = null;
     private static ExaminationQuestionDaoImpl examinationQuestionDaoImpl = null;
+    private static ResultDaoImpl resultDaoImpl = null;
+
 
 
     public static UserDaoImpl getUserDaoInstance(){
@@ -62,5 +64,10 @@ public class SingletonDaoUtil {
         }
         return examinationQuestionDaoImpl;
     }
-
+    public static ResultDaoImpl getResultDaoInstance(){
+        if(resultDaoImpl==null){
+            resultDaoImpl = new ResultDaoImpl();
+        }
+        return resultDaoImpl;
+    }
 }
