@@ -2,13 +2,10 @@ package vn.myclass.controller.admin;
 
 
 import org.apache.log4j.Logger;
-import org.hibernate.Session;
 import vn.myclass.command.UserCommand;
 import vn.myclass.core.common.utils.SessionUtil;
 import vn.myclass.core.dto.CheckLogin;
 import vn.myclass.core.dto.UserDTO;
-import vn.myclass.core.service.UserService;
-import vn.myclass.core.service.impl.UserServiceImpl;
 import vn.myclass.core.web.common.WebConstant;
 import vn.myclass.core.web.utils.FormUtil;
 import vn.myclass.core.web.utils.SingletonServiceUtil;
@@ -19,7 +16,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ResourceBundle;
 
